@@ -20,7 +20,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         Listing.standardFields.fetchListing { (listings) -> () in
             print(listings.D.Results)
             self.listings = listings.D.Results
-            self.photos?.count
+//            self.photos?.count
             
             self.collectionView?.reloadData()
             
