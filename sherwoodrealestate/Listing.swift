@@ -138,7 +138,9 @@ class Listing: Decodable, Encodable {
                     
                     print("The Converted MD5 /my/listings: " + apiSig)
                     
-                    let call = "http://sparkapi.com/v1/my/listings?AuthToken=\(authToken)&ApiSig=\(apiSig)"
+                    let call = "https://sparkapi.com/v1/my/listings?AuthToken=\(authToken)&ApiSig=\(apiSig)"
+                    
+//                    let call = "http://sparkapi.com/v1/my/listings?AuthToken=\(authToken)&ApiSig=\(apiSig)"
 //                    let call = "http://sparkapi.com/v1/my/listings?_orderby=-ListPriceAuthToken=\(authToken)&ApiSig=\(apiSig)"
                     print("The Session Call is: " + call)
                     let newCallUrl = URL(string: call)
@@ -162,20 +164,11 @@ class Listing: Decodable, Encodable {
                             var listingArray = [newListing.D.Results]
                             
                             for listing in newListing.D.Results {
-                                
-                                //                                        print("this is a \(listing)\n")
-                                
-                                //                                        if let theAddress = listing?.UnparsedAddress {
-                                //                                            nameLabel.text = theAddress
-                                //                                        }
-                                //                                         newListing.D.Results
-                                
-                                
-                                
+                          
                                 listingArray.append([listing])
-                                //                                        print(listing)
-                                //                                        print(listing.count)
-                                
+
+                                var photoArray = [listing.Id]
+
                                             for theId in [listing.Id] {
                                                 print(theId)
 //                                                print(theId)
@@ -202,9 +195,12 @@ class Listing: Decodable, Encodable {
                                                     do {
                                                         
                                                         let photoDecoder = JSONDecoder()
-                                                        
                                                         let photoCall = try photoDecoder.decode(photoData.self, from: data)
+                                                        
+
+                                                        photoArray.append(theId)
                                                         print(photoCall.D.Results)
+//                                                        print(photoCall.D.Results)
                                                     } catch let err {
                                                         print(err)
                                                     }
@@ -218,7 +214,7 @@ class Listing: Decodable, Encodable {
                             }
 //                            DispatchQueue.main.async(execute: { () -> Void in
 //
-//                                completionHandler(photoData)
+//                                completionHandler(photoCall)
 //
 //
 //                            })

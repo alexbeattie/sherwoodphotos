@@ -20,12 +20,23 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         Listing.standardFields.fetchListing { (listings) -> () in
             print(listings.D.Results)
             self.listings = listings.D.Results
-//            self.photos?.count
+//            self.photos = photos.D
+            
             
             self.collectionView?.reloadData()
             
             
         }
+//        Listing.photoResults.fetchListing { (photos) -> () in
+//            print(photos)
+//            self.photos = photos
+//            //            self.photos = photos.D
+//
+//            self.collectionView?.reloadData()
+//
+//
+//        }
+        
         navigationItem.title = "Sherwood Real Estate"
         
         collectionView?.backgroundColor = UIColor.white
